@@ -13,9 +13,11 @@ import java.util.Date;
 
 import static org.hamcrest.Matchers.*;
 import static org.junit.Assert.assertThat;
+import static org.mockito.Mockito.when;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration({"classpath:/applicationContext-activiti.xml", "classpath:/applicationContext.xml"})
+@ContextConfiguration({"classpath:/applicationContext-activiti.xml", "classpath:/applicationContext.xml",
+        "classpath:/applicationContext-test.xml"})
 public class WorkflowIntegrationTest {
 
     @Autowired
@@ -23,6 +25,9 @@ public class WorkflowIntegrationTest {
 
     @Autowired
     private Workflow workflow;
+
+    @Autowired
+    private WorkflowSupport workflowSupport;
 
     @Before
     public void init() {
@@ -45,6 +50,7 @@ public class WorkflowIntegrationTest {
 
     @Test
     public void afterRequestTimeOffShouldListIt() {
+        when(workflowSupport.shouldApprove()).thenReturn(true);
         TimeOffRequest request = new TimeOffRequest("foo@example.org", new Date(), new Date());
         workflow.requestTimeOff(request);
 
@@ -53,7 +59,16 @@ public class WorkflowIntegrationTest {
     }
 
     @Test
+    public void whenApproveIsNotNecessaryListIsEmpty() {
+        when(workflowSupport.shouldApprove()).thenReturn(false);
+        TimeOffRequest request = new TimeOffRequest("foo@example.org", new Date(), new Date());
+        workflow.requestTimeOff(request);
+        assertThat(workflow.listTimeOffRequests(), is(empty()));
+    }
+
+    @Test
     public void afterApproveListIsEmpty() {
+        when(workflowSupport.shouldApprove()).thenReturn(true);
         TimeOffRequest request = new TimeOffRequest("foo@example.org", new Date(), new Date());
         workflow.requestTimeOff(request);
         workflow.approve(request);
