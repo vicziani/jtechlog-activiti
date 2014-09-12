@@ -1,4 +1,4 @@
-Hamcrest
+Activiti
 ========
 
 Ez a program a JTechLog (<http://jtechlog.blogspot.com>) blog "Pehelysúlyú workflow Activitivel" cikkéhez készült példaprogram.
