@@ -1,0 +1,30 @@
+<html xmlns:concordion="http://www.concordion.org/2007/concordion">
+<head>
+    <title>Workflow</title>
+</head>
+<body>
+<h1>Workflow</h1>
+
+<p>Ez az Activiti workflow motort és Concordion teszt keretrendszert demonstráló példa alkalmazás egy munkafolyamatot 
+    tartalmaz, ahol egy szabadságigényt lehet beadni, majd jóváhagyni.
+    Bizonyos szabadságigények esetén az alkalmazás dönthet úgy, hogy a szabadságigényt nem kell jóváhagyni.</p>
+<p>Amennyiben bekerül egy szabadságigény, az megjelenik a feladatok között, mint jóváhagyandó 
+    szabadságigény.</p>
+
+<div class="example">
+    <h2>Példa</h2>
+
+    <p>Amennyiben egy felhasználó 
+        <span concordion:execute="requestTimeOff(#TEXT)">foo@example.org</span> e-mail címmel szabadságigényt ad fel,
+        a jóváhagyandó szabadságigények száma <span concordion:assertEquals="numberOfTimeOffRequests()">1</span>,
+        és az első szabadságigény <span concordion:assertEquals="mailOfFirstTimeOffRequest()">foo@example.org</span> e-mail címmel szerepel.
+    </p>
+</div>
+
+<ul>
+    <!-- <li><a concordion:run="concordion" href="ShouldNotApprove.html">Mi van, ha nem kell jóváhagyni a szabadságigényt?</a></li>
+    <li><a concordion:run="concordion" href="Approved.html">Mi van, ha a szabadságigény jóváhagyásra kerül?</a></li>-->
+</ul>
+
+</body>
+</html>
