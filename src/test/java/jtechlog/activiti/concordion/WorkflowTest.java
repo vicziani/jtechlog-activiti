@@ -1,7 +1,6 @@
 package jtechlog.activiti.concordion;
 
 import jtechlog.activiti.TimeOffRequest;
-import jtechlog.activiti.concordion.ConcordionTest;
 
 import java.util.Date;
 

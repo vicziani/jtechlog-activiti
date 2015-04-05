@@ -101,6 +101,13 @@
             <version>1.9.5</version>
             <scope>test</scope>
         </dependency>
+
+        <dependency>
+            <groupId>org.concordion</groupId>
+            <artifactId>concordion</artifactId>
+            <version>1.4.7</version>
+            <scope>test</scope>
+        </dependency>
     </dependencies>
 
     <build>

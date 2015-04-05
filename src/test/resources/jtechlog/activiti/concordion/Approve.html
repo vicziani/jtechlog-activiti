@@ -1,0 +1,22 @@
+<html xmlns:concordion="http://www.concordion.org/2007/concordion">
+<head>
+    <title>Jóváhagyás</title>
+</head>
+<body>
+<h1>Jóváhagyás</h1>
+
+<p>Amennyiben beadásra kerül egy szabadságigény, majd jóváhagyásra kerül, akkor
+    eltűnik jóváhagyandó igények közül.</p>
+
+<div class="example">
+    <h2>Példa</h2>
+
+    <p>Amennyiben egy felhasználó
+        <span concordion:execute="requestTimeOff(#TEXT)">foo@example.org</span> e-mail címmel szabadságigényt ad fel,
+        majd <span concordion:execute="approve()">jóváhagyásra kerül</span>,
+        a jóváhagyandó szabadságigények száma <span concordion:assertEquals="numberOfTimeOffRequests()">0</span>.
+    </p>
+</div>
+
+</body>
+</html>

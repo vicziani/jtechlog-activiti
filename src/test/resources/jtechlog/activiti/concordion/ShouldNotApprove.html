@@ -1,0 +1,22 @@
+<html xmlns:concordion="http://www.concordion.org/2007/concordion">
+<head>
+    <title>Nem szükséges jóváhagyás</title>
+</head>
+<body>
+<h1>Nem szükséges jóváhagyás</h1>
+
+<p>Amennyiben bekerül egy szabadságigény, és erről a rendszer úgy dönt, hogy nem kell jóváhagyni, akkor
+    nem jelenik meg a jóváhagyandó igények között.</p>
+
+<div class="example">
+    <h2>Példa</h2>
+
+    <p>Amennyiben egy felhasználó
+        <span concordion:execute="requestTimeOff(#TEXT)">foo@example.org</span> e-mail címmel szabadságigényt ad fel,
+        és a rendszer úgy dönt, hogy ezt nem kell jóváhagyni,
+        a jóváhagyandó szabadságigények száma <span concordion:assertEquals="numberOfTimeOffRequests()">0</span>.
+    </p>
+</div>
+
+</body>
+</html>
